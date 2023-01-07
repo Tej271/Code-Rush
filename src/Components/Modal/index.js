@@ -1,13 +1,13 @@
-import React, { Fragment, useRef, useState, useContext } from "react";
+import React, { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { FolderPlusIcon } from "@heroicons/react/24/outline";
-import { ModalContext } from "../../context/ModalContext";
+import { useModal } from "../../context/ModalContext";
 import { useProjects } from "../../context/DataContext";
 import { languageOptions } from "../../constants/languageOptions";
 
 export default function Modal() {
   const InputRef = useRef(null);
-  const { modalProps, closeModal } = useContext(ModalContext);
+  const { modalProps, closeModal } = useModal();
   const { addProject, renameProject, addFile } = useProjects();
   const [projectName, setProjectName] = useState("");
   const [lang, setLang] = useState({});
@@ -96,7 +96,6 @@ export default function Modal() {
                             </label>
                             <select
                               onChange={(e) => {
-                                let object = e.target.value.extension;
                                 setExt(e.target.value.split(",")[0]);
                                 setLang(e.target.value.split(",")[1]);
                                 setLangId(e.target.value.split(",")[2]);

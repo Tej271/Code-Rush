@@ -84,8 +84,6 @@ export const Provider = (props) => {
     });
   };
 
-  const renameFile = ({ id, name, language }) => {};
-
   return (
     <Context.Provider
       value={{
@@ -104,13 +102,3 @@ export const Provider = (props) => {
 };
 
 export const useProjects = () => useContext(Context);
-
-export const withProvider = (Component) => {
-  return (props) => {
-    return (
-      <Provider>
-        <Component {...props} />
-      </Provider>
-    );
-  };
-};

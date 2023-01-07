@@ -1,7 +1,7 @@
-import React, { Fragment, useContext } from "react";
+import React, { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { IoEllipsisVerticalSharp } from "react-icons/io5";
-import { ModalContext } from "../context/ModalContext";
+import { useModal } from "../context/ModalContext";
 import { useProjects } from "../context/DataContext";
 
 function classNames(...classes) {
@@ -10,7 +10,7 @@ function classNames(...classes) {
 
 export default function MenuDialog({ pid }) {
   const { removeProject } = useProjects();
-  const { openModal } = useContext(ModalContext);
+  const { openModal } = useModal();
 
   return (
     <Menu as="div" className="relative">
